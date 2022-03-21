@@ -21,6 +21,8 @@ public class Spelling : MonoBehaviour
 
     string allTogether;
 
+    public Timer timer;
+
     //other way of changing text
     // public GameObject changingTextTwo;
     //use in textChange method to update gameObject text to be new string
@@ -29,7 +31,7 @@ public class Spelling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = FindObjectOfType(typeof(Timer)) as Timer; 
     }
 
     // Update is called once per frame
@@ -84,6 +86,7 @@ public class Spelling : MonoBehaviour
             case 8:
                 letter9.text += selected;
                 printAll();
+                timer.TimerTrigger();
                 break;
         }
         letterCount++;
@@ -123,6 +126,7 @@ public class Spelling : MonoBehaviour
             case 8:
                 letter9.text += selected;
                 printAll();
+                timer.TimerTrigger();
                 break;
         }
         letterCount++;

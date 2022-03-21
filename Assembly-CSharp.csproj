@@ -38,8 +38,9 @@
   <ItemGroup>
      <Compile Include="Assets\tmp.cs" />
      <Compile Include="Assets\Switch.cs" />
-     <Compile Include="Assets\Spelling.cs" />
      <Compile Include="Assets\Math.cs" />
+     <Compile Include="Assets\Spelling.cs" />
+     <Compile Include="Assets\Timer.cs" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Coding\Unity\Hub\Editor\2020.3.29f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
