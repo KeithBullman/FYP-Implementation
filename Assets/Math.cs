@@ -17,10 +17,12 @@ public class Math : MonoBehaviour
 
     int numberCount = 0;
 
+    public Timer timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = FindObjectOfType(typeof(Timer)) as Timer; 
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class Math : MonoBehaviour
                 case 5:
                     number6.text += randomNumber;
                     getAssignedNumber();
+                    timer.TimerTrigger();
                     break;
             }
             numberCount++;
@@ -81,6 +84,7 @@ public class Math : MonoBehaviour
                 case 5:
                     number6.text += randomNumber;
                     getAssignedNumber();
+                    timer.TimerTrigger();
                     break;
             }
             numberCount++;

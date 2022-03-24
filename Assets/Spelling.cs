@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,10 +16,14 @@ public class Spelling : MonoBehaviour
     public Text letter8;
     public Text letter9;
 
+    public Text input;
+
     public Text tmp;
 
-    int letterCount = 0;
+    public Text userInput;
 
+    int letterCount = 0;
+    string remainingWord;
     string allTogether;
 
     public Timer timer;
@@ -37,7 +42,9 @@ public class Spelling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(letterCount >= 9){
+            checkInput();
+        }
     }
 
     // public void TextChange(){
@@ -87,6 +94,7 @@ public class Spelling : MonoBehaviour
                 letter9.text += selected;
                 printAll();
                 timer.TimerTrigger();
+                setInputDisplay();
                 break;
         }
         letterCount++;
@@ -127,6 +135,7 @@ public class Spelling : MonoBehaviour
                 letter9.text += selected;
                 printAll();
                 timer.TimerTrigger();
+                setInputDisplay();
                 break;
         }
         letterCount++;
@@ -135,4 +144,28 @@ public class Spelling : MonoBehaviour
     public void printAll(){
         tmp.text = allTogether;
     }
+
+    public void setInputDisplay(){
+        input.text = "INPUT: ______________";
+    }
+
+    public void checkInput(){
+        if(Input.anyKeyDown){
+            string keysPressed = Input.inputString;
+
+            if(keysPressed.Length == 1){
+                enterLetter(keysPressed);
+            }
+        }
+    }    
+
+    public void enterLetter(string letter){
+        if(allTogether.Contains(letter.ToUpper())){
+            userInput.text += letter.ToUpper();
+            var regex = new Regex(Regex.Escape(letter.ToUpper()));
+            allTogether = regex.Replace(allTogether, "", 1);
+            printAll();
+        }
+    }
+
 }
