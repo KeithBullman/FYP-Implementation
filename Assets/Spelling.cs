@@ -160,12 +160,21 @@ public class Spelling : MonoBehaviour
     }    
 
     public void enterLetter(string letter){
-        if(allTogether.Contains(letter.ToUpper())){
+        
+        if(letter == "\b"){
+            if(userInput.text.Length >= 1){
+                allTogether += userInput.text[userInput.text.Length - 1];
+                userInput.text = userInput.text.Remove(userInput.text.Length -1);
+
+            }
+        }
+        
+        else if(allTogether.Contains(letter.ToUpper())){
             userInput.text += letter.ToUpper();
             var regex = new Regex(Regex.Escape(letter.ToUpper()));
             allTogether = regex.Replace(allTogether, "", 1);
-            printAll();
-        }
-    }
 
+        }
+        printAll();
+    }
 }
