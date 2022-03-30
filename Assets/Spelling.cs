@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Spelling : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class Spelling : MonoBehaviour
     string remainingWord;
     string allTogether;
 
+    public GameObject consonantButton;
+    public GameObject vowelButton;
+
+    PlayfabManager playfabManager;
     public Timer timer;
 
     //other way of changing text
@@ -36,7 +41,10 @@ public class Spelling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType(typeof(Timer)) as Timer; 
+        timer = FindObjectOfType(typeof(Timer)) as Timer;
+        playfabManager = new PlayfabManager();
+        // GameObject playfab = new GameObject("PlayfabManager");
+        // playfabManager = playfab.AddComponent<PlayfabManager>();
     }
 
     // Update is called once per frame
@@ -44,6 +52,14 @@ public class Spelling : MonoBehaviour
     {
         if(letterCount >= 9){
             checkInput();
+
+            float result = timer.GetTime();
+
+            if(result == 0){
+                playfabManager.SendLeaderboard(userInput.text.Length);
+                playfabManager.GetLeaderboard();
+                SceneManager.LoadScene("test");
+            }
         }
     }
 
@@ -95,6 +111,8 @@ public class Spelling : MonoBehaviour
                 printAll();
                 timer.TimerTrigger();
                 setInputDisplay();
+                consonantButton.SetActive(false);
+                vowelButton.SetActive(false);
                 break;
         }
         letterCount++;
@@ -136,6 +154,8 @@ public class Spelling : MonoBehaviour
                 printAll();
                 timer.TimerTrigger();
                 setInputDisplay();
+                consonantButton.SetActive(false);
+                vowelButton.SetActive(false);
                 break;
         }
         letterCount++;

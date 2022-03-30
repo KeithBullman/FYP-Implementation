@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
+    public Image image;
     public float timeValue = 30;
     public Text timeText;
     
@@ -19,7 +20,7 @@ public class Timer : MonoBehaviour
     
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,6 +30,7 @@ public class Timer : MonoBehaviour
         if(timerStarted){
             if(timeValue > 0){
                 timeValue -= Time.deltaTime;
+
             }
             else{
             timeValue = 0;
@@ -43,7 +45,12 @@ public class Timer : MonoBehaviour
 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeText.text = string.Format("{0:00}", seconds);
+        image.fillAmount = timeToDisplay/30;
 
+    }
+
+    public float GetTime(){
+        return timeValue; 
     }
 
 }

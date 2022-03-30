@@ -38,9 +38,10 @@
   <ItemGroup>
      <Compile Include="Assets\tmp.cs" />
      <Compile Include="Assets\Switch.cs" />
+     <Compile Include="Assets\Timer.cs" />
      <Compile Include="Assets\Math.cs" />
      <Compile Include="Assets\Spelling.cs" />
-     <Compile Include="Assets\Timer.cs" />
+     <Compile Include="Assets\PlayfabManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Coding\Unity\Hub\Editor\2020.3.29f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -700,6 +701,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PlayFabSDKEditor.csproj">
+      <Project>{3a79e2fe-7537-6e8a-bc04-ae413c8a3c49}</Project>
+      <Name>PlayFabSDKEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PlayFabEditorExtensions.csproj">
+      <Project>{d5319960-f246-37cd-0d3b-07cefbbf277e}</Project>
+      <Name>PlayFabEditorExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="PlayFab.csproj">
+      <Project>{da76c0d1-854a-8dfd-f1ba-5c2c2a2a80d7}</Project>
+      <Name>PlayFab</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
