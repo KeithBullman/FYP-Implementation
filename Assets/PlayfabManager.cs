@@ -14,6 +14,8 @@ public class PlayfabManager : MonoBehaviour
 
     }
 
+    public GameObject rowPrefab;
+    public Transform rowsParent;
     public Text message;
     public InputField email;
     public InputField password;
@@ -98,8 +100,22 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void OnLeaderboardGet(GetLeaderboardResult result){
+
+        foreach(Transform item in rowsParent){
+            Destroy(item.gameObject);
+        }
+
         foreach(var item in result.Leaderboard){
-            Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+            
+            GameObject go = Instantiate(rowPrefab, rowsParent);
+
+            Text[] texts = go.GetComponentsInChildren<Text>();
+
+            texts[0].text = (item.Position+1).ToString();
+            texts[1].text = item.PlayFabId;
+            texts[2].text = item.StatValue.ToString();
+
+            Debug.Log("HERE:" + item.Position + " " + item.PlayFabId + " " + item.StatValue);
         }
     }
 }

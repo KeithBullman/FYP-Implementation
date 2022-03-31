@@ -15,7 +15,11 @@ public class Switch : MonoBehaviour
     }
 
     public void QuitGame(){
-    Debug.Log("Exited Game, Thanks for Playing!");
-    Application.Quit();
+        Debug.Log("Exited Game, Thanks for Playing!");
+        Application.Quit();
+    }
+
+    public void GoLeaderboard(){
+        SceneManager.LoadScene("Leaderboard");
     }
 }
