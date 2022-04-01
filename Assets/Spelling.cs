@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Globalization;  
+using System.Threading; 
 
 public class Spelling : MonoBehaviour
 {
@@ -33,6 +35,8 @@ public class Spelling : MonoBehaviour
     PlayfabManager playfabManager;
     public Timer timer;
 
+    TestDB testDb;
+
     //other way of changing text
     // public GameObject changingTextTwo;
     //use in textChange method to update gameObject text to be new string
@@ -43,6 +47,8 @@ public class Spelling : MonoBehaviour
     {
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         playfabManager = new PlayfabManager();
+        testDb = new TestDB();
+
         // GameObject playfab = new GameObject("PlayfabManager");
         // playfabManager = playfab.AddComponent<PlayfabManager>();
     }
@@ -56,7 +62,14 @@ public class Spelling : MonoBehaviour
             float result = timer.GetTime();
 
             if(result == 0){
-                playfabManager.SendLeaderboard(userInput.text.Length);
+                fixFormat();
+                if(testDb.ReadDB(userInput.text) == true){
+                    Debug.Log("WORD EXISTS");
+                    playfabManager.SendLeaderboard(userInput.text.Length);
+                }
+                else{
+                    Debug.Log("NO WORD");
+                }
                 SceneManager.LoadScene("Leaderboard");
             }
         }
@@ -195,5 +208,12 @@ public class Spelling : MonoBehaviour
 
         }
         printAll();
+    }
+
+    public void fixFormat(){
+        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;  
+        TextInfo textInfo = cultureInfo.TextInfo;
+        userInput.text = userInput.text.ToLower(); 
+        userInput.text = textInfo.ToTitleCase(userInput.text);
     }
 }
