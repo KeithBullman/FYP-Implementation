@@ -57,7 +57,6 @@ public class Spelling : MonoBehaviour
 
             if(result == 0){
                 playfabManager.SendLeaderboard(userInput.text.Length);
-                playfabManager.GetLeaderboard();
                 SceneManager.LoadScene("Leaderboard");
             }
         }

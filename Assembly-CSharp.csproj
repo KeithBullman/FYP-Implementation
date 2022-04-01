@@ -39,9 +39,10 @@
      <Compile Include="Assets\tmp.cs" />
      <Compile Include="Assets\Switch.cs" />
      <Compile Include="Assets\Timer.cs" />
+     <Compile Include="Assets\PlayfabManager.cs" />
      <Compile Include="Assets\Math.cs" />
      <Compile Include="Assets\Spelling.cs" />
-     <Compile Include="Assets\PlayfabManager.cs" />
+     <Compile Include="Assets\TestDB.cs" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Coding\Unity\Hub\Editor\2020.3.29f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -263,6 +264,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>E:\Coding\Unity\Hub\Editor\2020.3.29f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+        <HintPath>C:\Users\Kooth\Desktop\R00178736 - Keith Bullman - FYP\Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>E:\Coding\Unity\Hub\Editor\2020.3.29f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
