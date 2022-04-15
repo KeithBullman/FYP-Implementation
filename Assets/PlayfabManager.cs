@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayfabManager : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
 
     }
 
+    public string TESTT;
     public GameObject rowPrefab;
     public Transform rowsParent;
     public Text message;
@@ -74,9 +76,9 @@ public class PlayfabManager : MonoBehaviour
     void OnSuccess(LoginResult result){
 
         string name = null;
-
         if(result.InfoResultPayload.PlayerProfile != null){
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
+            NameController.usernamee = name;
         }
 
         if(name == null){
@@ -99,6 +101,7 @@ public class PlayfabManager : MonoBehaviour
         var request = new UpdateUserTitleDisplayNameRequest{
             DisplayName = username.text,
         };
+        NameController.usernamee = username.text;
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
     }
 
