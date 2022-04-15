@@ -20,6 +20,13 @@ public class PlayfabManager : MonoBehaviour
     public InputField email;
     public InputField password;
 
+    public InputField username;
+    public GameObject emailInput;
+    public GameObject passwordInput;
+    public GameObject loginButton;
+    public GameObject registerButton;
+    public GameObject usernameInput;
+    public GameObject submitUsername;
     public void Register(){
 
         if(password.text.Length < 6){
@@ -47,7 +54,10 @@ public class PlayfabManager : MonoBehaviour
     public void Login(){
         var request = new LoginWithEmailAddressRequest {
             Email = email.text,
-            Password = password.text
+            Password = password.text,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams{
+                GetPlayerProfile = true
+            }
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnSuccess, OnError);
     }
@@ -62,10 +72,39 @@ public class PlayfabManager : MonoBehaviour
     // }
 
     void OnSuccess(LoginResult result){
-        message.text = "Logging in";
-        SceneManager.LoadScene("MainMenu");
+
+        string name = null;
+
+        if(result.InfoResultPayload.PlayerProfile != null){
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+        }
+
+        if(name == null){
+            message.text = "Account Requires Username";
+            emailInput.SetActive(false);
+            passwordInput.SetActive(false);
+            loginButton.SetActive(false);
+            registerButton.SetActive(false);
+            usernameInput.SetActive(true);
+            submitUsername.SetActive(true);
+        }
+        else{
+            SceneManager.LoadScene("MainMenu");
+        }
 
         Debug.Log("Successful Login/Account Created!");
+    }
+
+    public void SubmitUsernameButton(){
+        var request = new UpdateUserTitleDisplayNameRequest{
+            DisplayName = username.text,
+        };
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+    }
+
+    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result){
+        Debug.Log("Username Added!");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void OnError(PlayFabError error){
@@ -112,7 +151,13 @@ public class PlayfabManager : MonoBehaviour
             Text[] texts = go.GetComponentsInChildren<Text>();
 
             texts[0].text = (item.Position+1).ToString();
-            texts[1].text = item.PlayFabId;
+            
+            if(item.DisplayName == null){
+                texts[1].text = item.PlayFabId;
+            }
+            else{
+                texts[1].text = item.DisplayName;
+            }
             texts[2].text = item.StatValue.ToString();
 
             Debug.Log("HERE:" + item.Position + " " + item.PlayFabId + " " + item.StatValue);
