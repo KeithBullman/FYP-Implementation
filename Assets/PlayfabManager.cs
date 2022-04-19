@@ -15,13 +15,11 @@ public class PlayfabManager : MonoBehaviour
 
     }
 
-    public string TESTT;
     public GameObject rowPrefab;
     public Transform rowsParent;
     public Text message;
     public InputField email;
     public InputField password;
-
     public InputField username;
     public GameObject emailInput;
     public GameObject passwordInput;
