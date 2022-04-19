@@ -1091,7 +1091,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1953218457}
         m_TargetAssemblyTypeName: Math, Assembly-CSharp
-        m_MethodName: getSmall
+        m_MethodName: multiply
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2642,7 +2642,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1953218457}
         m_TargetAssemblyTypeName: Math, Assembly-CSharp
-        m_MethodName: getSmall
+        m_MethodName: subtract
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3293,6 +3293,7 @@ MonoBehaviour:
   input: {fileID: 1927898005}
   userInput: {fileID: 736540505}
   assignedNumber: {fileID: 375691954}
+  isNum: 1
   bigButton: {fileID: 52896652}
   smallButton: {fileID: 2036082146}
   addButton: {fileID: 1099774623}
@@ -3396,7 +3397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1946204246}
-  timeValue: 30
+  timeValue: 10
   timeText: {fileID: 268460248}
   timerStarted: 0
 --- !u!1 &1962454158
@@ -3469,7 +3470,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[1]     [2]      [3]      [4]      [5]      [6]'
+  m_Text: '[a]     [b]      [c]      [d]      [e]      [f]'
 --- !u!222 &1962454161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3775,7 +3776,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1953218457}
         m_TargetAssemblyTypeName: Math, Assembly-CSharp
-        m_MethodName: getSmall
+        m_MethodName: divide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

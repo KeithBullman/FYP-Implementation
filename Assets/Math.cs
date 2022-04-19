@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq; 
+using System.Linq;
+using System.Data;
+using UnityEngine.SceneManagement;
 
 public class Math : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class Math : MonoBehaviour
     public Text userInput;
     public Text assignedNumber;
 
+    public bool numRequired = true;
+
     public GameObject bigButton;
     public GameObject smallButton;
     public GameObject addButton;
@@ -37,7 +41,9 @@ public class Math : MonoBehaviour
     List<string> lastNumberUsed = new List<string> { };
     List<int> lastDictionaryLocationUsed = new List<int> { };
 
-    List<string> numberInput = new List<string> {"1", "2", "3", "4", "5", "6"};
+    List<string> numberInput = new List<string> {"a", "b", "c", "d", "e", "f"};
+    List<string> operators = new List<string> { "+", "-", "*", "/" };
+
     Dictionary<int, string> numbers = new Dictionary<int, string>();
 
     int numberCount = 0;
@@ -56,6 +62,15 @@ public class Math : MonoBehaviour
         if(numberCount >= 6)
         {
             checkInput();
+
+            float result = timer.GetTime();
+
+            if (result == 0)
+            {
+                calculate();
+                SceneManager.LoadScene("Leaderboard");
+            }
+
         }
     }
 
@@ -155,7 +170,36 @@ public class Math : MonoBehaviour
 
     public void add()
     {
-        userInput.text += "+";
+        if (!numRequired)
+        {
+            userInput.text += "+";
+            numRequired = true;
+        }
+    }
+
+    public void subtract()
+    {
+        if (!numRequired)
+        {
+            userInput.text += "-";
+            numRequired = true;
+        }
+    }
+    public void multiply()
+    {
+        if (!numRequired)
+        {
+            userInput.text += "*";
+            numRequired = true;
+        }
+    }
+    public void divide()
+    {
+        if (!numRequired)
+        {
+            userInput.text += "/";
+            numRequired = true;
+        }
     }
 
     public void checkInput()
@@ -176,117 +220,152 @@ public class Math : MonoBehaviour
 
         switch (numberPressed)
         {
-
-            case "1":
+            case "a":
                 if (numbers[1] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[1];
-                    lastNumberUsed.Add(numbers[1]);
-                    lastDictionaryLocationUsed.Add(1);
-                    numbers[1] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[1];
+                        lastNumberUsed.Add(numbers[1]);
+                        lastDictionaryLocationUsed.Add(1);
+                        numbers[1] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
-            case "2":
+            case "b":
                 if (numbers[2] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[2];
-                    lastNumberUsed.Add(numbers[2]);
-                    lastDictionaryLocationUsed.Add(2);
-                    numbers[2] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[2];
+                        lastNumberUsed.Add(numbers[2]);
+                        lastDictionaryLocationUsed.Add(2);
+                        numbers[2] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
-            case "3":
+            case "c":
                 if (numbers[3] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[3];
-                    lastNumberUsed.Add(numbers[3]);
-                    lastDictionaryLocationUsed.Add(3);
-                    numbers[3] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[3];
+                        lastNumberUsed.Add(numbers[3]);
+                        lastDictionaryLocationUsed.Add(3);
+                        numbers[3] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
-            case "4":
+            case "d":
                 if (numbers[4] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[4];
-                    lastNumberUsed.Add(numbers[4]);
-                    lastDictionaryLocationUsed.Add(4);
-                    numbers[4] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[4];
+                        lastNumberUsed.Add(numbers[4]);
+                        lastDictionaryLocationUsed.Add(4);
+                        numbers[4] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
-            case "5":
+            case "e":
                 if (numbers[5] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[5];
-                    lastNumberUsed.Add(numbers[5]);
-                    lastDictionaryLocationUsed.Add(5);
-                    numbers[5] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[5];
+                        lastNumberUsed.Add(numbers[5]);
+                        lastDictionaryLocationUsed.Add(5);
+                        numbers[5] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
-            case "6":
+            case "f":
                 if (numbers[6] == "")
                 {
                     Debug.Log("noway");
                 }
                 else
                 {
-                    userInput.text += numbers[6];
-                    lastNumberUsed.Add(numbers[6]);
-                    lastDictionaryLocationUsed.Add(6);
-                    numbers[6] = "";
-                    displayAvailableNumbers();
+                    if (numRequired)
+                    {
+                        userInput.text += numbers[6];
+                        lastNumberUsed.Add(numbers[6]);
+                        lastDictionaryLocationUsed.Add(6);
+                        numbers[6] = "";
+                        displayAvailableNumbers();
+                        numRequired = false;
+                    }
                 }
                 break;
 
+
             case "\b":
 
-                //userInput.text = userInput.text.Remove(userInput.text.Length - (lastNumberUsed[lastNumberUsed.Count - 1]).Length);
-                //numbers[lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]] = lastNumberUsed[lastNumberUsed.Count - 1];
-                //displayAvailableNumbers();
+                if (numRequired)
+                {
+                    userInput.text = userInput.text.Remove(userInput.text.Length - 1);
+                    numRequired = false;
+                }
+                else
+                {
 
-                Debug.Log("LASTNUM: " + lastNumberUsed[lastNumberUsed.Count-1]);
-                Debug.Log("LASTDICLOC: " + lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]);
-                Debug.Log("LASTNUMLENGTH: " + ((lastNumberUsed[lastNumberUsed.Count - 1]).Length));
+                    //userInput.text = userInput.text.Remove(userInput.text.Length - (lastNumberUsed[lastNumberUsed.Count - 1]).Length);
+                    //numbers[lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]] = lastNumberUsed[lastNumberUsed.Count - 1];
+                    //displayAvailableNumbers();
 
-                userInput.text = userInput.text.Remove(userInput.text.Length - (lastNumberUsed[lastNumberUsed.Count - 1]).Length);
+                    Debug.Log("LASTNUM: " + lastNumberUsed[lastNumberUsed.Count - 1]);
+                    Debug.Log("LASTDICLOC: " + lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]);
+                    Debug.Log("LASTNUMLENGTH: " + ((lastNumberUsed[lastNumberUsed.Count - 1]).Length));
 
-                numbers[lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]] = lastNumberUsed[lastNumberUsed.Count - 1];
+                    userInput.text = userInput.text.Remove(userInput.text.Length - (lastNumberUsed[lastNumberUsed.Count - 1]).Length);
 
-                lastNumberUsed.Remove(lastNumberUsed[lastNumberUsed.Count-1]);
-                lastDictionaryLocationUsed.Remove(lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]);
+                    numbers[lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]] = lastNumberUsed[lastNumberUsed.Count - 1];
 
-                displayAvailableNumbers();
+                    lastNumberUsed.Remove(lastNumberUsed[lastNumberUsed.Count - 1]);
+                    lastDictionaryLocationUsed.Remove(lastDictionaryLocationUsed[lastDictionaryLocationUsed.Count - 1]);
 
-                break;
+                    displayAvailableNumbers();
+                    numRequired = true;
+                }
+
+                    break;
+                
         }
 
     }
@@ -320,6 +399,22 @@ public class Math : MonoBehaviour
             }
             counter++;
         }
+    }
+
+    public void calculate()
+    {
+        char lastChar = userInput.text[userInput.text.Length - 1];
+
+        if (operators.Contains(lastChar.ToString()))
+        {
+            userInput.text = userInput.text.Remove(userInput.text.Length - 1);
+        }
+
+        Debug.Log("EQUATION: " + userInput.text);
+        DataTable dt = new DataTable();
+        var v = dt.Compute(userInput.text, "");
+        Debug.Log("ANSWER: " + v);
+
     }
 
 }
