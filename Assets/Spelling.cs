@@ -20,18 +20,16 @@ public class Spelling : MonoBehaviour
     public Text letter9;
 
     public Text input;
-
     public Text tmp;
-
     public Text userInput;
 
     int letterCount = 0;
     string remainingWord;
     string allTogether;
 
+    public GameObject clock;
     public GameObject consonantButton;
     public GameObject vowelButton;
-
     public GameObject userDisplay;
 
     PlayfabManager playfabManager;
@@ -220,6 +218,7 @@ public class Spelling : MonoBehaviour
         consonantButton.SetActive(false);
         vowelButton.SetActive(false);
         userDisplay.SetActive(true);
+        clock.SetActive(true);
         letter1.text = "";
         letter2.text = "";
         letter3.text = "";

@@ -27,6 +27,7 @@ public class PlayfabManager : MonoBehaviour
     public GameObject registerButton;
     public GameObject usernameInput;
     public GameObject submitUsername;
+    public GameObject trophies;
     public void Register(){
 
         if(password.text.Length < 6){
@@ -131,6 +132,7 @@ public class PlayfabManager : MonoBehaviour
     }
 
     public void GetLeaderboard(){
+        trophies.SetActive(true);
         var request = new GetLeaderboardRequest {
             StatisticName = "Leaderboard",
             StartPosition = 0,

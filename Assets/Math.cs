@@ -22,6 +22,7 @@ public class Math : MonoBehaviour
     public Text availableNumber4;
     public Text availableNumber5;
     public Text availableNumber6;
+    public GameObject availableNumbers;
 
     public Text input;
     public Text userInput;
@@ -37,6 +38,9 @@ public class Math : MonoBehaviour
     public GameObject divideButton;
     public GameObject openBracketButton;
     public GameObject closeBracketButton;
+    public GameObject clock;
+    public GameObject userInputGUI;
+    public GameObject assignedNumberGUI;
 
     List<string> lastNumberUsed = new List<string> { };
     List<int> lastDictionaryLocationUsed = new List<int> { };
@@ -157,7 +161,8 @@ public class Math : MonoBehaviour
 
     public void swapButtonActivity()
     {
-        input.text = "INPUT: ______________";
+        input.text = "Your Equation";
+        clock.SetActive(true);
         smallButton.SetActive(false);
         bigButton.SetActive(false);
         addButton.SetActive(true);
@@ -166,6 +171,16 @@ public class Math : MonoBehaviour
         divideButton.SetActive(true);
         openBracketButton.SetActive(true);
         closeBracketButton.SetActive(true);
+        userInputGUI.SetActive(true);
+        assignedNumberGUI.SetActive(true);
+        availableNumbers.SetActive(true);
+
+        number1.text = "";
+        number2.text = "";
+        number3.text = "";
+        number4.text = "";
+        number5.text = "";
+        number6.text = "";
     }
 
     public void add()

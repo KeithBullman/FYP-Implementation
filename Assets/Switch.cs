@@ -27,6 +27,10 @@ public class Switch : MonoBehaviour
         SceneManager.LoadScene("Spelling");
     }
 
+    public void MathTutorial()
+    {
+        SceneManager.LoadScene("HowToMath");
+    }
     public void PlayMathematics(){
         SceneManager.LoadScene("Math");
     }
