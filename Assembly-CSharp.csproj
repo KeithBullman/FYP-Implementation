@@ -61,10 +61,12 @@
     <Compile Include="Assets\Timer.cs" />
     <Compile Include="Assets\NameController.cs" />
     <Compile Include="Assets\TestDB.cs" />
+    <Compile Include="Assets\Fade.cs" />
     <Compile Include="Assets\PlayfabManager.cs" />
     <Compile Include="Assets\Math.cs" />
     <Compile Include="Assets\Spelling.cs" />
-    <Compile Include="Assets\Fade.cs" />
+    <Compile Include="Assets\MusicPlayer.cs" />
+    <Compile Include="Assets\PreserveMusic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

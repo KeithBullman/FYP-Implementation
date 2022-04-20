@@ -43,7 +43,7 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result){
-        message.text = "Registered and Logged In!";
+        message.text = "Account Registered Successfully!";
     }
 
 

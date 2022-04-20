@@ -34,7 +34,6 @@ public class Spelling : MonoBehaviour
 
     PlayfabManager playfabManager;
     public Timer timer;
-
     TestDB testDb;
 
     //other way of changing text
