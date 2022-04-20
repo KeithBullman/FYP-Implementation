@@ -32,6 +32,8 @@ public class Spelling : MonoBehaviour
     public GameObject consonantButton;
     public GameObject vowelButton;
 
+    public GameObject userDisplay;
+
     PlayfabManager playfabManager;
     public Timer timer;
     TestDB testDb;
@@ -121,9 +123,7 @@ public class Spelling : MonoBehaviour
                 letter9.text += selected;
                 printAll();
                 timer.TimerTrigger();
-                setInputDisplay();
-                consonantButton.SetActive(false);
-                vowelButton.SetActive(false);
+                changePriority();
                 break;
         }
         letterCount++;
@@ -164,9 +164,7 @@ public class Spelling : MonoBehaviour
                 letter9.text += selected;
                 printAll();
                 timer.TimerTrigger();
-                setInputDisplay();
-                consonantButton.SetActive(false);
-                vowelButton.SetActive(false);
+                changePriority();
                 break;
         }
         letterCount++;
@@ -177,7 +175,7 @@ public class Spelling : MonoBehaviour
     }
 
     public void setInputDisplay(){
-        input.text = "INPUT: ______________";
+        input.text = "Your Word";
     }
 
     public void checkInput(){
@@ -214,5 +212,22 @@ public class Spelling : MonoBehaviour
         TextInfo textInfo = cultureInfo.TextInfo;
         userInput.text = userInput.text.ToLower(); 
         userInput.text = textInfo.ToTitleCase(userInput.text);
+    }
+
+    public void changePriority()
+    {
+        setInputDisplay();
+        consonantButton.SetActive(false);
+        vowelButton.SetActive(false);
+        userDisplay.SetActive(true);
+        letter1.text = "";
+        letter2.text = "";
+        letter3.text = "";
+        letter4.text = "";
+        letter5.text = "";
+        letter6.text = "";
+        letter7.text = "";
+        letter8.text = "";
+        letter9.text = "";
     }
 }

@@ -13,6 +13,16 @@ public class Switch : MonoBehaviour
     void Start(){
         greeting.text = "Welcome, " + NameController.usernamee + "!";
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SpellingTutorial()
+    {
+        SceneManager.LoadScene("HowToSpell");
+    }
     public void PlaySpelling(){
         SceneManager.LoadScene("Spelling");
     }

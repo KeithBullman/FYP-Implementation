@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leaderboard.unity
     guid: ac3fb84f56901634b94ba6f1c5c96952
+  - enabled: 1
+    path: Assets/Scenes/HowToSpell.unity
+    guid: fdeda3fdcc3a51c4e9b299fed4e00b8e
   m_configObjects: {}
