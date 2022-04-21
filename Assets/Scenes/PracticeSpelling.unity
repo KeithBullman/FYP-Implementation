@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 156279620}
-  timeValue: 30
+  timeValue: 5
   timeText: {fileID: 255382251}
   timerStarted: 0
 --- !u!114 &920910886

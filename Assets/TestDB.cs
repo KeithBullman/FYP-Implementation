@@ -7,7 +7,7 @@ using System;
 public class TestDB : MonoBehaviour
 {
     public bool ReadDB(string userInput){
-        string conn = "URI=file:" + Application.dataPath + "/Dictionary.db"; //Path to database.
+        string conn = "URI=file:" + Application.dataPath + "/StreamingAssets/Dictionary.db"; //Path to database.
         IDbConnection dbconn;
         dbconn = (IDbConnection) new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
