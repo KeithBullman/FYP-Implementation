@@ -63,11 +63,13 @@
     <Compile Include="Assets\TestDB.cs" />
     <Compile Include="Assets\PreserveMusic.cs" />
     <Compile Include="Assets\Fade.cs" />
+    <Compile Include="Assets\PracticeSpellingResult.cs" />
+    <Compile Include="Assets\PracticeSpelling.cs" />
     <Compile Include="Assets\PlayfabManager.cs" />
     <Compile Include="Assets\Math.cs" />
     <Compile Include="Assets\Spelling.cs" />
-    <Compile Include="Assets\PracticeSpelling.cs" />
-    <Compile Include="Assets\PracticeSpellingResult.cs" />
+    <Compile Include="Assets\PracticeMath.cs" />
+    <Compile Include="Assets\PracticeMathResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

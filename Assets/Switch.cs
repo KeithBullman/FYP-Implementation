@@ -32,7 +32,7 @@ public class Switch : MonoBehaviour
         SceneManager.LoadScene("HowToMath");
     }
     public void PlayMathematics(){
-        SceneManager.LoadScene("Math");
+        SceneManager.LoadScene("PracticeMath");
     }
 
     public void QuitGame(){
