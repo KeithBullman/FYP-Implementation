@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToMath.unity
     guid: fff89bb262e7c6944be77f6c619eaca1
+  - enabled: 1
+    path: Assets/Scenes/PracticeSpelling.unity
+    guid: 39ec189a19ef9fa4bafca84ded2438f1
+  - enabled: 1
+    path: Assets/Scenes/PracticeSpellingResult.unity
+    guid: 5b19196470373c94d956094e2c218441
+  - enabled: 1
+    path: Assets/Scenes/PracticeMath.unity
+    guid: 9d2f7fbeebe48b7498fcdbb91722ad3d
   m_configObjects: {}

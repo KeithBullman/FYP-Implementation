@@ -155,8 +155,6 @@ public class Math : MonoBehaviour
 
         int test = System.Convert.ToInt32(assignedNumber.text);
 
-        Debug.Log(test - 5);
-
     }
 
     public void swapButtonActivity()
@@ -216,6 +214,24 @@ public class Math : MonoBehaviour
             numRequired = true;
         }
     }
+
+    //public void openBracket()
+    //{
+    //    if (!numRequired)
+    //    {
+    //        userInput.text += "(";
+    //        numRequired = true;
+    //    }
+    //}
+
+    //public void closeBracket()
+    //{
+    //    if (!numRequired)
+    //    {
+    //        userInput.text += ")";
+    //        numRequired = true;
+    //    }
+    //}
 
     public void checkInput()
     {
@@ -418,18 +434,32 @@ public class Math : MonoBehaviour
 
     public void calculate()
     {
-        char lastChar = userInput.text[userInput.text.Length - 1];
 
-        if (operators.Contains(lastChar.ToString()))
+        if(userInput.text == "")
         {
-            userInput.text = userInput.text.Remove(userInput.text.Length - 1);
+            Debug.Log("ANSWER: " + 0);
         }
 
-        Debug.Log("EQUATION: " + userInput.text);
-        DataTable dt = new DataTable();
-        var v = dt.Compute(userInput.text, "");
-        Debug.Log("ANSWER: " + v);
+        else
+        {
+            char lastChar = userInput.text[userInput.text.Length - 1];
 
+            if (operators.Contains(lastChar.ToString()))
+            {
+                userInput.text = userInput.text.Remove(userInput.text.Length - 1);
+            }
+
+            //int howManyOpen = (userInput.text).Count(f => (f == '('));
+            //int howManyClosed = (userInput.text).Count(f => (f == ')'));
+
+            //Debug.Log("OPEN: " + howManyOpen);
+            //Debug.Log("CLOSED: " + howManyClosed);
+
+            Debug.Log("EQUATION: " + userInput.text);
+            DataTable dt = new DataTable();
+            var v = dt.Compute(userInput.text, "");
+            Debug.Log("ANSWER: " + v);
+        }
     }
 
 }

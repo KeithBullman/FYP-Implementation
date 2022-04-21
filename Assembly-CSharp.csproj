@@ -66,6 +66,8 @@
     <Compile Include="Assets\PlayfabManager.cs" />
     <Compile Include="Assets\Math.cs" />
     <Compile Include="Assets\Spelling.cs" />
+    <Compile Include="Assets\PracticeSpelling.cs" />
+    <Compile Include="Assets\PracticeSpellingResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
