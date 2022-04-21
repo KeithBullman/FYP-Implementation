@@ -1095,7 +1095,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1
@@ -1913,6 +1913,7 @@ MonoBehaviour:
   registerButton: {fileID: 1231597135}
   usernameInput: {fileID: 1553577305}
   submitUsername: {fileID: 282323780}
+  trophies: {fileID: 0}
 --- !u!114 &913969720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,7 +2831,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1

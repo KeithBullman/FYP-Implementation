@@ -44,6 +44,7 @@ public class PracticeSpelling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NameController.practiceWordScore = 0;
         NameController.word = "";
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         playfabManager = new PlayfabManager();
@@ -68,6 +69,7 @@ public class PracticeSpelling : MonoBehaviour
                 if (testDb.ReadDB(userInput.text) == true)
                 {
                     NameController.word = userInput.text;
+                    getScore();
                     Debug.Log("WORD EXISTS");
                 }
                 else
@@ -248,4 +250,47 @@ public class PracticeSpelling : MonoBehaviour
         letter8.text = "";
         letter9.text = "";
     }
+
+    public void getScore()
+    {
+        switch (userInput.text.Length)
+        {
+            case 1:
+                NameController.practiceWordScore = 0;
+                break;
+
+            case 2:
+                NameController.practiceWordScore = 0;
+                break;
+
+            case 3:
+                NameController.practiceWordScore = 1;
+                break;
+
+            case 4:
+                NameController.practiceWordScore = 2;
+                break;
+
+            case 5:
+                NameController.practiceWordScore = 3;
+                break;
+
+            case 6:
+                NameController.practiceWordScore = 4;
+                break;
+
+            case 7:
+                NameController.practiceWordScore = 5;
+                break;
+
+            case 8:
+                NameController.practiceWordScore = 6;
+                break;
+
+            case 9:
+                NameController.practiceWordScore = 10;
+                break;
+        }
+    }
+
 }

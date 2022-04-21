@@ -17,7 +17,15 @@ public class PracticeSpellingResult : MonoBehaviour
         {
             yourWord.text = "Your Word: " + NameController.word;
             header.text = "Congratulations!";
-            mainMessage.text = "Well done, in competitive mode, this spelling round would have earned you " + NameController.word.Length + " points!";
+            if (NameController.word.Length <= 2)
+            {
+                mainMessage.text = "While this word is valid in the games dictionary, in competitive mode, this spelling round would have earned you " + NameController.practiceWordScore + " points due to the length of the word.";
+            }
+
+            else
+            {
+                mainMessage.text = "Well done, in competitive mode, this spelling round would have earned you " + NameController.practiceWordScore + " points!";
+            }
         }
 
         else
