@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayfabManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     public GameObject rowPrefab;
@@ -73,11 +74,11 @@ public class PlayfabManager : MonoBehaviour
     // }
 
     void OnSuccess(LoginResult result){
-
         string name = null;
         if(result.InfoResultPayload.PlayerProfile != null){
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
             NameController.usernamee = name;
+            GetStatistics();
         }
 
         if(name == null){
@@ -92,7 +93,8 @@ public class PlayfabManager : MonoBehaviour
         else{
             SceneManager.LoadScene("MainMenu");
         }
-
+        //Sleep for 1 second to fetch players highscore in time instead of it being 0 on main menu
+        Thread.Sleep(1000);
         Debug.Log("Successful Login/Account Created!");
     }
 
@@ -136,9 +138,10 @@ public class PlayfabManager : MonoBehaviour
         var request = new GetLeaderboardRequest {
             StatisticName = "Leaderboard",
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 8
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
+        GetStatistics();
     }
 
     void OnLeaderboardGet(GetLeaderboardResult result){
@@ -161,9 +164,36 @@ public class PlayfabManager : MonoBehaviour
             else{
                 texts[1].text = item.DisplayName;
             }
+
+            if (NameController.usernamee == item.DisplayName)
+            {
+                NameController.userHighScore = item.StatValue;
+            }
+
+
             texts[2].text = item.StatValue.ToString();
 
-            Debug.Log("HERE:" + item.Position + " " + item.PlayFabId + " " + item.StatValue);
+            //Debug.Log("HERE:" + item.Position + " " + item.PlayFabId + " " + item.StatValue);
         }
     }
+
+    public void GetStatistics()
+    {
+        PlayFabClientAPI.GetPlayerStatistics(
+            new GetPlayerStatisticsRequest(),
+            OnGetStatistics,
+            error => Debug.LogError(error.GenerateErrorReport())
+        );
+    }
+
+    void OnGetStatistics(GetPlayerStatisticsResult result)
+    {
+        foreach (var eachStat in result.Statistics)
+            if(eachStat.StatisticName == "Leaderboard")
+            {
+                NameController.userHighScore = eachStat.Value;
+            }
+            
+    }
+
 }

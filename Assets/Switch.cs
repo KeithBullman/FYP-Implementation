@@ -9,9 +9,11 @@ public class Switch : MonoBehaviour
 {
 
     public Text greeting;
+    public Text highScore;
 
     void Start(){
         greeting.text = "Welcome, " + NameController.usernamee + "!";
+        highScore.text = "Your current highscore is " + NameController.userHighScore.ToString() + "!";
     }
 
     public void MainMenu()

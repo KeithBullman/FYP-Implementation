@@ -6,6 +6,7 @@ public class NameController : MonoBehaviour
 {
     //store username for main menu
     public static string usernamee;
+    public static int userHighScore;
 
     //store score as you progress through rounds for sending to database if playing competitive mode
     public static int roundCounter;

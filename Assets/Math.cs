@@ -443,6 +443,9 @@ public class Math : MonoBehaviour
         if(userInput.text == "")
         {
             Debug.Log("ANSWER: " + 0);
+            NameController.currentScore += 0;
+            NameController.pointsAcquired = 0;
+            NameController.successfulRound = false;
         }
 
         else
