@@ -28,6 +28,9 @@ public class Math : MonoBehaviour
     public Text userInput;
     public Text assignedNumber;
 
+    public Text score;
+    public Text currentRound;
+
     public bool numRequired = true;
 
     public GameObject bigButton;
@@ -57,7 +60,9 @@ public class Math : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType(typeof(Timer)) as Timer; 
+        timer = FindObjectOfType(typeof(Timer)) as Timer;
+        score.text = "Score: " + NameController.currentScore.ToString();
+        currentRound.text = "Round #: " + NameController.roundCounter.ToString() + "/6";
     }
 
     // Update is called once per frame
@@ -72,7 +77,7 @@ public class Math : MonoBehaviour
             if (result == 0)
             {
                 calculate();
-                SceneManager.LoadScene("Leaderboard");
+                SceneManager.LoadScene("Checkpoint");
             }
 
         }
@@ -459,6 +464,61 @@ public class Math : MonoBehaviour
             DataTable dt = new DataTable();
             var v = dt.Compute(userInput.text, "");
             Debug.Log("ANSWER: " + v);
+
+            int tempresult = System.Convert.ToInt32(v);
+            NameController.practiceMathResult = tempresult;
+
+            int temptarget = System.Convert.ToInt32(assignedNumber.text);
+
+            int difference = temptarget - tempresult;
+
+            int convertedDifference = System.Math.Abs(difference);
+
+            Debug.Log("TARGET: " + temptarget);
+
+            Debug.Log(convertedDifference);
+
+
+            switch (convertedDifference)
+            {
+
+                case int n when convertedDifference == 0:
+                    NameController.currentScore += 10;
+                    NameController.pointsAcquired = 10;
+                    NameController.successfulRound = true;
+                    break;
+
+                case int n when convertedDifference <= 5:
+                    NameController.currentScore += 5;
+                    NameController.pointsAcquired = 5;
+                    NameController.successfulRound = true;
+                    break;
+
+                case int n when convertedDifference <= 10:
+                    NameController.currentScore += 4;
+                    NameController.pointsAcquired = 4;
+                    NameController.successfulRound = true;
+                    break;
+
+                case int n when convertedDifference <= 15:
+                    NameController.currentScore += 3;
+                    NameController.pointsAcquired = 3;
+                    NameController.successfulRound = true;
+                    break;
+
+                case int n when convertedDifference <= 20:
+                    NameController.currentScore += 2;
+                    NameController.pointsAcquired = 2;
+                    NameController.successfulRound = true;
+                    break;
+
+                case int n when convertedDifference > 20:
+                    NameController.currentScore += 0;
+                    NameController.pointsAcquired = 0;
+                    NameController.successfulRound = false;
+                    break;
+            }
+
         }
     }
 

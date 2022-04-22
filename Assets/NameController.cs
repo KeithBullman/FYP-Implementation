@@ -10,6 +10,8 @@ public class NameController : MonoBehaviour
     //store score as you progress through rounds for sending to database if playing competitive mode
     public static int roundCounter;
     public static int currentScore;
+    public static int pointsAcquired;
+    public static bool successfulRound;
 
     //store word and score for practice spelling mode
     public static string word;

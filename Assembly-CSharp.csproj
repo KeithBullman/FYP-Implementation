@@ -60,16 +60,17 @@
     <Compile Include="Assets\Timer.cs" />
     <Compile Include="Assets\MusicPlayer.cs" />
     <Compile Include="Assets\NameController.cs" />
+    <Compile Include="Assets\PracticeMath.cs" />
     <Compile Include="Assets\TestDB.cs" />
     <Compile Include="Assets\PreserveMusic.cs" />
     <Compile Include="Assets\Fade.cs" />
     <Compile Include="Assets\PracticeSpellingResult.cs" />
+    <Compile Include="Assets\PracticeMathResult.cs" />
     <Compile Include="Assets\PracticeSpelling.cs" />
     <Compile Include="Assets\PlayfabManager.cs" />
     <Compile Include="Assets\Math.cs" />
     <Compile Include="Assets\Spelling.cs" />
-    <Compile Include="Assets\PracticeMath.cs" />
-    <Compile Include="Assets\PracticeMathResult.cs" />
+    <Compile Include="Assets\Checkpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

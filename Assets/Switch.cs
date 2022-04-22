@@ -55,4 +55,5 @@ public class Switch : MonoBehaviour
     public void GoLeaderboard(){
         SceneManager.LoadScene("Leaderboard");
     }
+
 }

@@ -47,9 +47,9 @@ public class Spelling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        NameController.pointsAcquired = 0;
         score.text = "Score: " + NameController.currentScore.ToString();
-        currentRound.text = "Round #: " + NameController.roundCounter.ToString();
+        currentRound.text = "Round #: " + NameController.roundCounter.ToString() + "/6";
 
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         playfabManager = new PlayfabManager();
@@ -70,14 +70,16 @@ public class Spelling : MonoBehaviour
             if(result == 0){
                 fixFormat();
                 if(testDb.ReadDB(userInput.text) == true){
+                    getScore();
                     Debug.Log("WORD EXISTS");
-                    playfabManager.SendLeaderboard(userInput.text.Length);
+                    NameController.successfulRound = true;
+                    //playfabManager.SendLeaderboard(userInput.text.Length);
                 }
                 else{
+                    NameController.successfulRound = false;
                     Debug.Log("NO WORD");
                 }
-                NameController.roundCounter += 1;
-                SceneManager.LoadScene("Leaderboard");
+                SceneManager.LoadScene("Checkpoint");
             }
         }
     }
@@ -237,4 +239,56 @@ public class Spelling : MonoBehaviour
         letter8.text = "";
         letter9.text = "";
     }
+
+    public void getScore()
+    {
+        switch (userInput.text.Length)
+        {
+            case 1:
+                NameController.currentScore += 0;
+                NameController.pointsAcquired = 0;
+                break;
+
+            case 2:
+                NameController.currentScore += 0;
+                NameController.pointsAcquired = 0;
+                break;
+
+            case 3:
+                NameController.currentScore += 1;
+                NameController.pointsAcquired = 1;
+                break;
+
+            case 4:
+                NameController.currentScore += 2;
+                NameController.pointsAcquired = 2;
+                break;
+
+            case 5:
+                NameController.currentScore += 3;
+                NameController.pointsAcquired = 3;
+                break;
+
+            case 6:
+                NameController.currentScore += 4;
+                NameController.pointsAcquired = 4;
+                break;
+
+            case 7:
+                NameController.currentScore += 5;
+                NameController.pointsAcquired = 5;
+                break;
+
+            case 8:
+                NameController.currentScore += 6;
+                NameController.pointsAcquired = 6;
+                break;
+
+            case 9:
+                NameController.currentScore += 10;
+                NameController.pointsAcquired = 10;
+                break;
+        }
+    }
+
 }
