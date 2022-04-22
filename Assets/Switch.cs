@@ -35,6 +35,13 @@ public class Switch : MonoBehaviour
         SceneManager.LoadScene("PracticeMath");
     }
 
+    public void PlayCompetitive()
+    {
+        NameController.currentScore = 0;
+        NameController.roundCounter = 1;
+        SceneManager.LoadScene("Spelling");
+    }
+
     public void QuitGame(){
 		string message = "1 + 200 * (3 + 4)";
 		DataTable dt = new DataTable();

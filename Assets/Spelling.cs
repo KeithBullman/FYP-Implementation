@@ -23,6 +23,9 @@ public class Spelling : MonoBehaviour
     public Text tmp;
     public Text userInput;
 
+    public Text score;
+    public Text currentRound;
+
     int letterCount = 0;
     string remainingWord;
     string allTogether;
@@ -44,6 +47,10 @@ public class Spelling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        score.text = "Score: " + NameController.currentScore.ToString();
+        currentRound.text = "Round #: " + NameController.roundCounter.ToString();
+
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         playfabManager = new PlayfabManager();
         testDb = new TestDB();
@@ -69,6 +76,7 @@ public class Spelling : MonoBehaviour
                 else{
                     Debug.Log("NO WORD");
                 }
+                NameController.roundCounter += 1;
                 SceneManager.LoadScene("Leaderboard");
             }
         }
