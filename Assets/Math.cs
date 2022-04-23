@@ -42,6 +42,7 @@ public class Math : MonoBehaviour
     public GameObject clock;
     public GameObject userInputGUI;
     public GameObject assignedNumberGUI;
+    public GameObject numbersBox;
 
     List<string> lastNumberUsed = new List<string> { };
     List<int> lastDictionaryLocationUsed = new List<int> { };
@@ -176,6 +177,7 @@ public class Math : MonoBehaviour
         userInputGUI.SetActive(true);
         assignedNumberGUI.SetActive(true);
         availableNumbers.SetActive(true);
+        numbersBox.SetActive(true);
 
         number1.text = "";
         number2.text = "";

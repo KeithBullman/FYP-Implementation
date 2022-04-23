@@ -34,6 +34,7 @@ public class Spelling : MonoBehaviour
     public GameObject consonantButton;
     public GameObject vowelButton;
     public GameObject userDisplay;
+    public GameObject allLetterBox;
 
     PlayfabManager playfabManager;
     public Timer timer;
@@ -228,6 +229,7 @@ public class Spelling : MonoBehaviour
         consonantButton.SetActive(false);
         vowelButton.SetActive(false);
         userDisplay.SetActive(true);
+        allLetterBox.SetActive(true);
         clock.SetActive(true);
         letter1.text = "";
         letter2.text = "";

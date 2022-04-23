@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Switch.cs" />
     <Compile Include="Assets\Timer.cs" />
+    <Compile Include="Assets\Checkpoint.cs" />
     <Compile Include="Assets\MusicPlayer.cs" />
     <Compile Include="Assets\NameController.cs" />
     <Compile Include="Assets\PracticeMath.cs" />
@@ -70,7 +71,6 @@
     <Compile Include="Assets\PlayfabManager.cs" />
     <Compile Include="Assets\Math.cs" />
     <Compile Include="Assets\Spelling.cs" />
-    <Compile Include="Assets\Checkpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

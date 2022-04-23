@@ -31,6 +31,7 @@ public class PracticeSpelling : MonoBehaviour
     public GameObject consonantButton;
     public GameObject vowelButton;
     public GameObject userDisplay;
+    public GameObject letterBox;
 
     PlayfabManager playfabManager;
     public Timer timer;
@@ -239,6 +240,7 @@ public class PracticeSpelling : MonoBehaviour
         consonantButton.SetActive(false);
         vowelButton.SetActive(false);
         userDisplay.SetActive(true);
+        letterBox.SetActive(true);
         clock.SetActive(true);
         letter1.text = "";
         letter2.text = "";
