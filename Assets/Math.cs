@@ -39,8 +39,6 @@ public class Math : MonoBehaviour
     public GameObject subtractButton;
     public GameObject multiplyButton;
     public GameObject divideButton;
-    public GameObject openBracketButton;
-    public GameObject closeBracketButton;
     public GameObject clock;
     public GameObject userInputGUI;
     public GameObject assignedNumberGUI;
@@ -60,6 +58,9 @@ public class Math : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NameController.yourNumber = 0;
+        NameController.targetNumber = 0;
+
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         score.text = "Score: " + NameController.currentScore.ToString();
         currentRound.text = "Round #: " + NameController.roundCounter.ToString() + "/6";
@@ -172,8 +173,6 @@ public class Math : MonoBehaviour
         subtractButton.SetActive(true);
         multiplyButton.SetActive(true);
         divideButton.SetActive(true);
-        openBracketButton.SetActive(true);
-        closeBracketButton.SetActive(true);
         userInputGUI.SetActive(true);
         assignedNumberGUI.SetActive(true);
         availableNumbers.SetActive(true);
@@ -219,24 +218,6 @@ public class Math : MonoBehaviour
             numRequired = true;
         }
     }
-
-    //public void openBracket()
-    //{
-    //    if (!numRequired)
-    //    {
-    //        userInput.text += "(";
-    //        numRequired = true;
-    //    }
-    //}
-
-    //public void closeBracket()
-    //{
-    //    if (!numRequired)
-    //    {
-    //        userInput.text += ")";
-    //        numRequired = true;
-    //    }
-    //}
 
     public void checkInput()
     {
@@ -440,7 +421,10 @@ public class Math : MonoBehaviour
     public void calculate()
     {
 
-        if(userInput.text == "")
+        int temptarget = System.Convert.ToInt32(assignedNumber.text);
+        NameController.targetNumber = temptarget;
+
+        if (userInput.text == "")
         {
             Debug.Log("ANSWER: " + 0);
             NameController.currentScore += 0;
@@ -470,8 +454,7 @@ public class Math : MonoBehaviour
 
             int tempresult = System.Convert.ToInt32(v);
             NameController.practiceMathResult = tempresult;
-
-            int temptarget = System.Convert.ToInt32(assignedNumber.text);
+            NameController.yourNumber = tempresult;
 
             int difference = temptarget - tempresult;
 
@@ -480,7 +463,6 @@ public class Math : MonoBehaviour
             Debug.Log("TARGET: " + temptarget);
 
             Debug.Log(convertedDifference);
-
 
             switch (convertedDifference)
             {

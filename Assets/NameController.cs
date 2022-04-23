@@ -9,6 +9,10 @@ public class NameController : MonoBehaviour
     public static int userHighScore;
 
     //store score as you progress through rounds for sending to database if playing competitive mode
+
+    public static int yourNumber;
+    public static int targetNumber;
+    
     public static int roundCounter;
     public static int currentScore;
     public static int pointsAcquired;

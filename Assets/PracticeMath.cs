@@ -36,8 +36,6 @@ public class PracticeMath : MonoBehaviour
     public GameObject subtractButton;
     public GameObject multiplyButton;
     public GameObject divideButton;
-    public GameObject openBracketButton;
-    public GameObject closeBracketButton;
     public GameObject clock;
     public GameObject userInputGUI;
     public GameObject assignedNumberGUI;
@@ -176,8 +174,6 @@ public class PracticeMath : MonoBehaviour
         subtractButton.SetActive(true);
         multiplyButton.SetActive(true);
         divideButton.SetActive(true);
-        openBracketButton.SetActive(true);
-        closeBracketButton.SetActive(true);
         userInputGUI.SetActive(true);
         assignedNumberGUI.SetActive(true);
         availableNumbers.SetActive(true);
@@ -223,24 +219,6 @@ public class PracticeMath : MonoBehaviour
             numRequired = true;
         }
     }
-
-    //public void openBracket()
-    //{
-    //    if (!numRequired)
-    //    {
-    //        userInput.text += "(";
-    //        numRequired = true;
-    //    }
-    //}
-
-    //public void closeBracket()
-    //{
-    //    if (!numRequired)
-    //    {
-    //        userInput.text += ")";
-    //        numRequired = true;
-    //    }
-    //}
 
     public void checkInput()
     {

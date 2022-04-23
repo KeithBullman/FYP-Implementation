@@ -16,6 +16,10 @@ public class Checkpoint : MonoBehaviour
     public Text currentScore;
     public Text nextRound;
 
+    public Text yourMathResult;
+    public Text mathTarget;
+    public Text difference;
+
     PlayfabManager playfabManager;
 
     // Start is called before the first frame update
@@ -57,6 +61,11 @@ public class Checkpoint : MonoBehaviour
 
     public void getNextRound()
     {
+
+
+        int diff = NameController.targetNumber - NameController.yourNumber;
+        int convertedDifference = System.Math.Abs(diff);
+
         switch (NameController.roundCounter + 1)
         {
             case 2:
@@ -64,6 +73,9 @@ public class Checkpoint : MonoBehaviour
                 break;
 
             case 3:
+                yourMathResult.text = "Your Result: " + NameController.yourNumber.ToString();
+                mathTarget.text = "Target: " + NameController.targetNumber.ToString();
+                difference.text = "Difference: " + convertedDifference.ToString();
                 nextRound.text = "Checkpoint (Next Round: Spelling)";
                 break;
 
@@ -76,6 +88,9 @@ public class Checkpoint : MonoBehaviour
                 break;
 
             case 6:
+                yourMathResult.text = "Your Result: " + NameController.yourNumber.ToString();
+                mathTarget.text = "Target: " + NameController.targetNumber.ToString();
+                difference.text = "Difference: " + convertedDifference.ToString();
                 nextRound.text = "Checkpoint (Next Round: Spelling)";
                 break;
         }
