@@ -9,6 +9,7 @@ using System.Threading;
 
 public class Spelling : MonoBehaviour
 {
+
     public Text letter1;
     public Text letter2;
     public Text letter3;
@@ -63,7 +64,8 @@ public class Spelling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(letterCount >= 9){
+
+        if (letterCount >= 9){
             checkInput();
 
             float result = timer.GetTime();
