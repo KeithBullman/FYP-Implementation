@@ -20,6 +20,8 @@ public class Spelling : MonoBehaviour
     public Text letter8;
     public Text letter9;
 
+    public Text placeholder;
+
     public Text input;
     public Text tmp;
     public Text userInput;
@@ -32,12 +34,14 @@ public class Spelling : MonoBehaviour
     string allTogether;
 
     public GameObject clock;
+    public GameObject standbyClock;
     public GameObject consonantButton;
     public GameObject vowelButton;
     public GameObject userDisplay;
     public GameObject allLetterBox;
 
     PlayfabManager playfabManager;
+    public StandybyTimer standbyTimer;
     public Timer timer;
     TestDB testDb;
 
@@ -54,6 +58,7 @@ public class Spelling : MonoBehaviour
         currentRound.text = "Round #: " + NameController.roundCounter.ToString() + "/6";
 
         timer = FindObjectOfType(typeof(Timer)) as Timer;
+        standbyTimer = FindObjectOfType(typeof(StandybyTimer)) as StandybyTimer;
         playfabManager = new PlayfabManager();
         testDb = new TestDB();
 
@@ -65,8 +70,31 @@ public class Spelling : MonoBehaviour
     void Update()
     {
 
+        if(userInput.text == "")
+        {
+            placeholder.text = "Type here...";
+        }
+        else
+        {
+            placeholder.text = "";
+        }
+
         if (letterCount >= 9){
-            checkInput();
+
+            //checkInput();
+
+            float standbyResult = standbyTimer.GetTime();
+
+            if (standbyResult == 0)
+            {
+                timer.TimerTrigger();
+                standbyClock.SetActive(false);
+                clock.SetActive(true);
+                userDisplay.SetActive(true);
+                allLetterBox.SetActive(true);
+                printAll();
+                checkInput();
+            }
 
             float result = timer.GetTime();
 
@@ -132,8 +160,8 @@ public class Spelling : MonoBehaviour
                 break;
             case 8:
                 letter9.text += selected;
-                printAll();
-                timer.TimerTrigger();
+                //printAll();
+                standbyTimer.TimerTrigger();
                 changePriority();
                 break;
         }
@@ -173,8 +201,8 @@ public class Spelling : MonoBehaviour
                 break;
             case 8:
                 letter9.text += selected;
-                printAll();
-                timer.TimerTrigger();
+                //printAll();
+                standbyTimer.TimerTrigger();
                 changePriority();
                 break;
         }
@@ -230,9 +258,7 @@ public class Spelling : MonoBehaviour
         setInputDisplay();
         consonantButton.SetActive(false);
         vowelButton.SetActive(false);
-        userDisplay.SetActive(true);
-        allLetterBox.SetActive(true);
-        clock.SetActive(true);
+        standbyClock.SetActive(true);
         letter1.text = "";
         letter2.text = "";
         letter3.text = "";

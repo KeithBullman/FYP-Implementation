@@ -54,6 +54,7 @@ public class PlayfabManager : MonoBehaviour
     }
 
     public void Login(){
+        message.text = "Logging in, please wait...";
         var request = new LoginWithEmailAddressRequest {
             Email = email.text,
             Password = password.text,
@@ -94,7 +95,7 @@ public class PlayfabManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
         //Sleep for 1 second to fetch players highscore in time instead of it being 0 on main menu
-        Thread.Sleep(1000);
+        Thread.Sleep(1250);
         Debug.Log("Successful Login/Account Created!");
     }
 

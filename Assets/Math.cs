@@ -40,6 +40,7 @@ public class Math : MonoBehaviour
     public GameObject multiplyButton;
     public GameObject divideButton;
     public GameObject clock;
+    public GameObject standbyClock;
     public GameObject userInputGUI;
     public GameObject assignedNumberGUI;
     public GameObject numbersBox;
@@ -55,13 +56,14 @@ public class Math : MonoBehaviour
     int numberCount = 0;
 
     public Timer timer;
+    public StandybyTimer standbyTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         NameController.yourNumber = 0;
         NameController.targetNumber = 0;
-
+        standbyTimer = FindObjectOfType(typeof(StandybyTimer)) as StandybyTimer;
         timer = FindObjectOfType(typeof(Timer)) as Timer;
         score.text = "Score: " + NameController.currentScore.ToString();
         currentRound.text = "Round #: " + NameController.roundCounter.ToString() + "/6";
@@ -72,7 +74,25 @@ public class Math : MonoBehaviour
     {
         if(numberCount >= 6)
         {
-            checkInput();
+
+            float standbyResult = standbyTimer.GetTime();
+
+            if(standbyResult == 0)
+            {
+                checkInput();
+                timer.TimerTrigger();
+                standbyClock.SetActive(false);
+                clock.SetActive(true);
+                userInputGUI.SetActive(true);
+                addButton.SetActive(true);
+                subtractButton.SetActive(true);
+                multiplyButton.SetActive(true);
+                divideButton.SetActive(true);
+                availableNumbers.SetActive(true);
+                numbersBox.SetActive(true);
+                clock.SetActive(true);
+                displayAvailableNumbers();
+            }
 
             float result = timer.GetTime();
 
@@ -109,9 +129,8 @@ public class Math : MonoBehaviour
                 case 5:
                     number6.text += randomNumber;
                     getAssignedNumber();
-                    timer.TimerTrigger();
+                    standbyTimer.TimerTrigger();
                     swapButtonActivity();
-                    displayAvailableNumbers();
                     break;
             }
             numberCount++;
@@ -146,9 +165,8 @@ public class Math : MonoBehaviour
             case 5:
                 number6.text += randomNumber;
                 getAssignedNumber();
-                timer.TimerTrigger();
+                standbyTimer.TimerTrigger();
                 swapButtonActivity();
-                displayAvailableNumbers();
                 break;
         }
         numberCount++;
@@ -167,17 +185,10 @@ public class Math : MonoBehaviour
     public void swapButtonActivity()
     {
         input.text = "Your Equation";
-        clock.SetActive(true);
         smallButton.SetActive(false);
         bigButton.SetActive(false);
-        addButton.SetActive(true);
-        subtractButton.SetActive(true);
-        multiplyButton.SetActive(true);
-        divideButton.SetActive(true);
-        userInputGUI.SetActive(true);
+        standbyClock.SetActive(true);
         assignedNumberGUI.SetActive(true);
-        availableNumbers.SetActive(true);
-        numbersBox.SetActive(true);
 
         number1.text = "";
         number2.text = "";
